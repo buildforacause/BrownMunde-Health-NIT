@@ -29,5 +29,5 @@ RUNNING THE PROJECT: To run our project,
  
 LINK TO THE HOSTED WEBSITE: 
 GITHUB REPO: https://github.com/sidsingh0/BrownMunde-Health-NIT/tree/master/healthproject
-
+LINK to website : https://digiaid.herokuapp.com/
  
