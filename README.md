@@ -11,6 +11,7 @@ TECH STACK: front-end (html,css,js), back-end(django with postgreSQL)
 
 # DESCRIPTION:
 We have created a web application pertaining to the given topic. Our project consists of 4 major parts:
+
 1> In case of emergencies Appointments with doctors can be booked via the website. We have created a form for this part and users can input their details and descriptions of the problems
    to be sent to the doctors. If the user is logged in, then the previously booked appointments can also be seen in the user's login dropdown in 'My appointments' section.
    
