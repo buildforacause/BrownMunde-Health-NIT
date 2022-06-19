@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from django.contrib.messages import constants as messages
-
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,15 +77,17 @@ WSGI_APPLICATION = 'healthproject.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'health_database',
-        'USER': 'health_admin',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(),
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'health_database',
+#         'USER': 'health_admin',
+#         'PASSWORD': 'admin',
+#
+#     }
+# }
 
 
 # Password validation
@@ -143,3 +145,5 @@ AUTH_USER_MODEL = "healthapp.User"
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+
