@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-u4orp3=#*)s2o0svehyn9*!gcu6%6k*l#w_zgy=eg69ij(wms@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://digiaid.herokuapp.com/']
 
 
 # Application definition
@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'healthproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'health_database',
+        'USER': 'health_admin',
+        'PASSWORD': 'admin',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
