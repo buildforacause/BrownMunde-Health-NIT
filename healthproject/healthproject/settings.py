@@ -82,8 +82,6 @@ DATABASES = {
         'NAME': 'health_database',
         'USER': 'health_admin',
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '',
     }
 }
 
