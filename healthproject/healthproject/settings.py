@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-u4orp3=#*)s2o0svehyn9*!gcu6%6k*l#w_zgy=eg69ij(wms@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://digiaid.herokuapp.com/']
+ALLOWED_HOSTS = ['digiaid.herokuapp.com']
 
 
 # Application definition
