@@ -31,6 +31,7 @@ We have created a web application pertaining to the given topic. Our project con
 
 # RUNNING THE PROJECT:
 To run our project,
+
 1> first download the files from github into your pc.
 
 2> Navigate to the healthproject folder(containing healthapp,healthproject,templates etc).
