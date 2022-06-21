@@ -43,7 +43,7 @@ def home(request):
                         top_headlines['articles'][n]['url'], top_headlines['articles'][n]['urlToImage']]
             news.append(articles)
     except:
-        news = [['EPA Issues Advisory About PFAS or 'Forever Chemicals' in Drinking Water: What You Need to Know Now', 'People who are concerned about PFAS levels in their drinking water can take steps to reduce their risk, such as installing a home water filter, the…',
+        news = [['EPA Issues Advisory About PFAS or "Forever Chemicals" in Drinking Water: What You Need to Know Now', 'People who are concerned about PFAS levels in their drinking water can take steps to reduce their risk, such as installing a home water filter, the…',
                 'https://www.healthline.com/health-news/epa-issues-advisory-about-pfas-or-forever-chemicals-in-drinking-water-what-you-to-know-now', 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/06/water-fucet-1296x728-header-1296x729.jpg?w=1575'],
                ['CDC Recommends COVID-19 Vaccines For Kids Under 5: What to Know', 'A key independant panel for the FDA has voted on whether or not to authorize a COVID-19 vaccine for children under age 5.',
                 'https://www.healthline.com/health-news/key-fda-panel-recommends-covid-19-vaccines-for-kids-under-5', 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/06/child-doctor-vaccine-1296x728-header-1296x729.jpg?w=1575'],
