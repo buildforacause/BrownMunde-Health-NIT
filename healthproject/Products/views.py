@@ -24,13 +24,13 @@ def add(request):
             quantity=request.POST.get("prodqty")
         )
         new_product.save()
-        return redirect("/")
+        return redirect("/crud/")
 
 
 def delete(request, id):
     prod = Product.objects.filter(id=id).first()
     prod.delete()
-    return redirect("/")
+    return redirect("/crud/")
 
 
 def get(request, id):
@@ -47,4 +47,4 @@ def edit(request):
         prod.price = request.POST.get("editprodprice")
         prod.quantity = request.POST.get("editprodqty")
         prod.save()
-    return redirect("/")
+    return redirect("/crud/")
