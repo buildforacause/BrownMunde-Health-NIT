@@ -11,17 +11,17 @@
 
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="/crud/">CRUD</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="/crud/">Home</a>
         </li>
       </ul>
-      <form class="d-flex" role="search" method="post" action=".">
+      <form class="d-flex" role="search" method="post" action="/crud/">
         {% csrf_token %}
         <input name="searchQuery" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -54,7 +54,7 @@
       <td>{{ product.quantity }}</td>
       <td>
           <button type="button" id="{{ product.id }}" onclick="hello(this);" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#EditModal">Edit</button>
-          <a type="submit" href="delete/{{ product.id }}/" class="btn btn-outline-primary">Delete</a>
+          <a type="submit" href="/crud/delete/{{ product.id }}/" class="btn btn-outline-primary">Delete</a>
       </td>
     </tr>
   {% endfor %}
@@ -79,7 +79,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row" method="post" action="/add/">
+        <form class="row" method="post" action="/crud/add/">
           {% csrf_token %}
           <div class="mb-3">
             <label for="prodname" class="form-label">Product Name</label>
@@ -113,7 +113,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row" method="post" action="/edit/">
+        <form class="row" method="post" action="/crud/edit/">
           {% csrf_token %}
           <input type="hidden" id="editprodid" name="editprodid">
           <div class="mb-3">
@@ -163,7 +163,7 @@
 
     function hello(btn){
       let id = btn.id;
-      fetch("/get/" + id)
+      fetch("/crud/get/" + id)
       .then((response) => response.json())
           .then((res) => {
             res = JSON.parse(res);
