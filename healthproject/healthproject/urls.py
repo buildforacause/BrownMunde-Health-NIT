@@ -18,14 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-admin.site.site_header = "DigiAID Admin"
-admin.site.site_title = "DigiAID Admin Panel"
-admin.site.index_title = "Welcome to DigiAID Admin Panel"
+admin.site.site_header = "FabFit Admin"
+admin.site.site_title = "FabFit Admin Panel"
+admin.site.index_title = "Welcome to FabFit Admin Panel"
 
 
 urlpatterns = [
     path('health-admin/', admin.site.urls),
-    path('crud/', include('Products.urls')),
     path('', include('healthapp.urls'))
 ]
 

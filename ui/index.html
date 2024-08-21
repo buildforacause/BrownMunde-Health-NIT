@@ -1,8 +1,172 @@
-{% extends 'base.html'%}
-{% block title %} Home {% endblock %}
-{% block homeactive %} active {% endblock %}
-{% block body %}
-{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Home </title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="Home-1.css" media="screen">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <style>
+      .u-text-palette-2-base .u-svg-link, .u-text-hover-palette-2-base:hover .u-svg-link,
+      .u-button-style:hover > .u-text-hover-palette-2-base .u-svg-link,
+      .u-button-style.u-button-style.active > .u-text-active-palette-2-base .u-svg-link,
+      .u-text-hover-palette-2-base:focus .u-svg-link{
+        fill: #292d33;
+      }
+      
+      
+    </style>
+  </head>
+  <body>
+  <div class="navbar-nav px-3 py-2 bg-dark text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+            <h1>FabFit</h1>
+          </a>
+
+          <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link  active ">
+                <center><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                  <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"></path>
+                </svg></center>
+                Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="picker.html" class="nav-link  text-secondary ">
+                <center><i class="bi bi-cursor-fill"></i></center>
+                Picker
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/bmi/" class="nav-link  text-secondary ">
+                <center><i class="bi bi-calculator-fill"></i></center>
+                BMI calculator
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="/appointment/" class="nav-link  text-secondary ">
+                <center><i class="bi bi-table"></i></center>
+                Appointments
+              </a>
+            </li>
+            <li>
+      
+      <ul class="text-secondary navbar-nav mx-1 my-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <center><i class="bi bi-person-fill"></i></center>Join Us</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown">
+            <li><a type="button" class="dropdown-item" aria-current="page" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a></li>
+            <li><a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+  <!-- Signup Modal -->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">SignUp Here</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+        <form method="post" action="/signup/" class="needs-validation" novalidate>
+          <input type="hidden" name="csrfmiddlewaretoken" value="Y1pm6SkEQ6tJMQFodiu2YMbqAtSjux2tBYkJTK05ibyixS4jA3KB1f4uhu46vNE2">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <div class="invalid-feedback">
+                Please enter a valid email id.
+              </div>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">UserName</label>
+            <input name="name" type="text" class="form-control" id="name" required>
+               <div class="invalid-feedback">
+                Please enter an unique username.
+              </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="password" required>
+             <div class="invalid-feedback">
+                Please enter a password.
+              </div>
+          </div>
+          <div class="my-4">
+            <button type="submit" class="btn btn-secondary">Sign Up</button>
+          </div>
+        </form>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login Here</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+        <form method="post" action="/login/" class="needs-validation" novalidate>
+          <input type="hidden" name="csrfmiddlewaretoken" value="Y1pm6SkEQ6tJMQFodiu2YMbqAtSjux2tBYkJTK05ibyixS4jA3KB1f4uhu46vNE2">
+          <div class="mb-3">
+            <label for="loginname" class="form-label">UserName</label>
+            <input name="name" type="text" class="form-control" id="loginname" required>
+               <div class="invalid-feedback">
+                Please enter username.
+              </div>
+          </div>
+          <div class="mb-3">
+            <label for="loginpassword" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="loginpassword">
+            <div class="invalid-feedback">
+                Please enter a password.
+              </div>
+          </div>
+          <div class="my-4">
+            <button type="submit" class="btn-secondary btn">Login</button>
+          </div>
+        </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
 
 
 
@@ -104,8 +268,8 @@
                   </div>
                   <div class="u-align-left u-container-style u-grey-90 u-layout-cell u-right-cell u-size-20 u-layout-cell-2">
                     <div class="u-container-layout u-valign-middle u-container-layout-2"><span class="u-icon u-icon-circle u-icon-1"><svg class="u-svg-link" preserveAspectRatio="xMidYMin slice" viewBox="0 -42 426.66667 426" style=""><use xlink:href="#svg-f236"></use></svg><svg class="u-svg-content" viewBox="0 -42 426.66667 426" id="svg-f236"><path d="m373.332031.332031h-64c-29.417969 0-53.332031 23.9375-53.332031 53.335938v64c0 29.394531 23.914062 53.332031 53.332031 53.332031h64c3.648438 0 7.210938-.382812 10.667969-1.089844v43.757813c0 47.058593-38.273438 85.332031-85.332031 85.332031h-21.335938c-11.796875 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.535156 21.335938 21.332031 21.335938h21.335938c70.589843 0 128-57.410157 128-128v-160c0-29.398438-23.914063-53.335938-53.335938-53.335938zm0 0"></path><path d="m117.332031.332031h-64c-29.417969 0-53.332031 23.9375-53.332031 53.335938v64c0 29.394531 23.914062 53.332031 53.332031 53.332031h64c3.648438 0 7.210938-.382812 10.667969-1.089844v43.757813c0 47.058593-38.273438 85.332031-85.332031 85.332031h-21.335938c-11.796875 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.535156 21.335938 21.332031 21.335938h21.335938c70.589843 0 128-57.410157 128-128v-160c0-29.398438-23.914063-53.335938-53.335938-53.335938zm0 0"></path></svg></span>
-                      <p class="u-large-text u-text u-text-default u-text-variant u-text-1">{{ quote }}</p>
-                      <p>- {{ author }}</p>
+                      <p class="u-large-text u-text u-text-default u-text-variant u-text-1">A man who cannot tolerate small misfortunes can never accomplish great things.</p>
+                      <p>- Chinese Proverb</p>
                       <p>Tip: These quotes change dynamically!</p>
                     </div>
                   </div>
@@ -123,7 +287,7 @@
                     <div class="u-container-layout u-valign-middle-lg u-valign-middle-xl u-container-layout-5">
                       <h2 class="u-text u-text-default u-text-2">Try our Exercise Picker!</h2>
                       <p class="u-text u-text-3">A newly added feature, which lets you train your muscles by your choice of muscle workout selection!</p>
-                      <a href="{% url 'health-picker' %}" class="u-active-grey-60 u-align-left u-black u-border-none u-btn u-button-style u-hover-grey-60 u-btn-2">Try now</a>
+                      <a href="/picker/" class="u-active-grey-60 u-align-left u-black u-border-none u-btn u-button-style u-hover-grey-60 u-btn-2">Try now</a>
                     </div>
                   </div>
                 </div>
@@ -158,18 +322,18 @@
               <div class="u-size-30">
                 <div class="u-layout-row">
                   <div class="u-align-center u-container-style u-image u-layout-cell u-left-cell u-size-20 u-image-1" data-image-width="1620" data-image-height="1080">
-                       <img src="{{ news.0.3 }}" height="100%" width="100%">
+                       <img src="" height="100%" width="100%">
                   </div>
                   
                   <div class="u-align-center u-container-style u-grey-10 u-layout-cell u-size-20 u-layout-cell-2">
                     <div class="u-container-layout u-valign-middle u-container-layout-2">
-                      <h4 class="u-align-center u-text u-text-3">{{ news.1.0 }}</h4>
-                      <p class="u-align-center u-text u-text-4">{{ news.1.1| slice:"0:120" }}...</p>
-                      <a class=" my-2 text-secondary" style="text-decoration: none;" href="{{ news.1.2 }}">Read More</a>
+                      <h4 class="u-align-center u-text u-text-3"></h4>
+                      <p class="u-align-center u-text u-text-4">...</p>
+                      <a class=" my-2 text-secondary" style="text-decoration: none;" href="">Read More</a>
                     </div>
                   </div>
                   <div class="u-align-center u-container-style u-image u-layout-cell u-right-cell u-size-20 u-image-2" data-image-width="900" data-image-height="679">
-                    <img src="{{ news.2.3 }}" height="100%" width="100%">
+                    <img src="" height="100%" width="100%">
                   </div>
                 </div>
               </div>
@@ -177,19 +341,19 @@
                 <div class="u-layout-row">
                   <div class="u-align-center u-container-style u-grey-10 u-layout-cell u-left-cell u-size-20 u-layout-cell-4">
                     <div class="u-container-layout u-valign-middle u-container-layout-4">
-                      <h4 class="u-text u-text-5">{{ news.0.0 }}</h4>
-                      <p class="u-text u-text-6">{{ news.0.1| slice:"0:120" }}...</p>
-                      <a class=" my-2 text-secondary" style="text-decoration: none;" href="{{ news.0.2 }}">Read More</a>
+                      <h4 class="u-text u-text-5"></h4>
+                      <p class="u-text u-text-6">...</p>
+                      <a class=" my-2 text-secondary" style="text-decoration: none;" href="">Read More</a>
                     </div>
                   </div>
                   <div class="u-align-center u-container-style u-image u-layout-cell u-size-20 u-image-3" data-image-width="645" data-image-height="679">
-                    <img src="{{ news.1.3 }}" height="100%" width="100%">
+                    <img src="" height="100%" width="100%">
                   </div>
                   <div class="u-align-center u-container-style u-grey-5 u-layout-cell u-right-cell u-size-20 u-layout-cell-6">
                     <div class="u-container-layout u-valign-middle u-container-layout-6">
-                      <h4 class="u-text u-text-7">{{ news.2.0 }}</h4>
-                      <p class="u-text u-text-8">{{ news.2.1 | slice:"0:120" }}...</p>
-                      <a class=" my-2 text-secondary" style="text-decoration: none;" href="{{ news.2.2 }}">Read More</a>
+                      <h4 class="u-text u-text-7"></h4>
+                      <p class="u-text u-text-8">...</p>
+                      <a class=" my-2 text-secondary" style="text-decoration: none;" href="">Read More</a>
                     </div>
                   </div>
                 </div>
@@ -210,7 +374,7 @@
             <div class="u-layout-row">
               <div class="u-align-center-md u-align-center-sm u-align-center-xs u-container-style u-grey-5 u-layout-cell u-size-30 u-layout-cell-1">
                 <div class="u-container-layout u-valign-middle u-container-layout-1">
-                    <img class="u-image u-image-circle u-preserve-proportions u-image-1" src="https://raw.githubusercontent.com/sidsingh0/BrownMunde-Health-NIT/master/healthproject/healthapp/static/healthapp/images/DA.png">
+                    <img class="u-image u-image-circle u-preserve-proportions u-image-1" src="https://png.pngtree.com/png-clipart/20200710/original/pngtree-medical-health-logo-png-image_4135905.jpg">
                   <h2 class="u-align-center-lg u-align-center-xl u-text u-text-default u-text-1">About us</h2>
                 </div>
               </div>
@@ -231,4 +395,45 @@
     </section>
 
 
-{% endblock %}
+
+
+  <!-- FOOTER -->
+
+  <div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+      </a>
+      <span class="mb-3 mb-md-0 text-muted">© 2024 FabFit, Inc</span>
+    </div>
+  </footer>
+</div>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <script>
+      (function () {
+  'use strict'
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+  </script>
+
+    
+
+  
+
+  </body>
+</html>

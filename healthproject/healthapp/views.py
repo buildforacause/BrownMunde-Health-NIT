@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 from django.contrib import messages
 from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -11,6 +11,7 @@ import json
 import plotly.express as px
 import requests
 from django.contrib.auth.decorators import login_required
+
 
 STOCK_ENDPOINT = "https://www.alphavantage.co/query"
 NEWS_ENDPOINT = "https://newsapi.org/v2/everything"
@@ -28,27 +29,30 @@ headers = {
 
 
 def home(request):
-    response = requests.get("https://zenquotes.io/api/today/[your_key]%22")
+    response = requests.get("https://zenquotes.io/api/today/")
     data = response.json()
     quote = (data[0]['q'])
     author = (data[0]['a'])
-    try:
-        newsapi = NewsApiClient(api_key='b52c3bd64a744b7cbb7e05e997668ecf')
-        top_headlines = newsapi.get_top_headlines(category='health',
-                                                  language='en',
-                                                  country='in')
-        news = []
-        for n in range(0, 3):
+    # newsapi = NewsApiClient(api_key='b52c3bd64a744b7cbb7e05e997668ecf')
+    # top_headlines = newsapi.get_top_headlines(
+    #                                       category='health',
+    #                                       language='en',
+    #                                       country='in')
+    top_headlines = requests.get("https://newsapi.org/v2/top-headlines?country=in&category=health&apiKey=b52c3bd64a744b7cbb7e05e997668ecf")
+    top_headlines = top_headlines.json()
+    print(top_headlines)
+    news = []
+    for n in range(0, len(top_headlines)):
+        index=0
+        if(index == 3):
+            break
+        if(top_headlines['articles'][n]['urlToImage']):
             articles = [top_headlines['articles'][n]['title'], top_headlines['articles'][n]['description'],
-                        top_headlines['articles'][n]['url'], top_headlines['articles'][n]['urlToImage']]
-            news.append(articles)
-    except:
-        news = [['EPA Issues Advisory About PFAS or "Forever Chemicals" in Drinking Water: What You Need to Know Now', 'People who are concerned about PFAS levels in their drinking water can take steps to reduce their risk, such as installing a home water filter, the…',
-                'https://www.healthline.com/health-news/epa-issues-advisory-about-pfas-or-forever-chemicals-in-drinking-water-what-you-to-know-now', 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/06/water-fucet-1296x728-header-1296x729.jpg?w=1575'],
-               ['CDC Recommends COVID-19 Vaccines For Kids Under 5: What to Know', 'A key independant panel for the FDA has voted on whether or not to authorize a COVID-19 vaccine for children under age 5.',
-                'https://www.healthline.com/health-news/key-fda-panel-recommends-covid-19-vaccines-for-kids-under-5', 'https://i0.wp.com/post.healthline.com/wp-content/uploads/2022/06/child-doctor-vaccine-1296x728-header-1296x729.jpg?w=1575'],
-                ['Many Men Prioritize Playing Video Games, Drinking Over Good Sleep', 'A new survey finds that a majority of men say they often sacrifice a good night’s sleep to spend more time playing video games and drinking alcohol.',
-                 'https://www.healthline.com/health-news/many-men-prioritize-playing-video-games-drinking-over-good-sleep', 'https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80']]
+                    top_headlines['articles'][n]['url'], top_headlines['articles'][n]['urlToImage']]
+            index += 1
+        else:
+            continue
+        news.append(articles)
     return render(request, 'healthapp/home.html', {'news': news, 'quote': quote, 'author': author})
 
 
